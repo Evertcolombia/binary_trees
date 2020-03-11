@@ -9,13 +9,17 @@ int binary_tree(const binary_tree_t *tree);
  */
 int binary_tree_balance(const binary_tree_t *tree)
 {
-	int res = 0;
+	int h_left = 0, h_right = 0;
 
 	if (tree == NULL)
 		return (0);
 
-	res = binary_tree(tree);
-	return (res);
+	if (tree->left)
+                h_left = binary_tree(tree->left)  + 1;
+        if (tree->right)
+                h_right = binary_tree(tree->right) + 1;
+
+	return (h_left - h_right);
 }
 
 /**
@@ -33,13 +37,13 @@ int binary_tree(const binary_tree_t *tree)
 
 	if (tree->left)
 		h_left = binary_tree(tree->left)  + 1;
-	else
-		h_left += h_left;
-
 	if (tree->right)
 		h_right = binary_tree(tree->right) + 1;
-	else
-		h_right += h_right;
 
-	return (h_left - h_right);
+	if (h_left > h_right)
+	{
+		return(h_left);
+	}
+	else
+		return (h_right);
 }
