@@ -1,41 +1,31 @@
 #include "binary_trees.h"
-#include <stdio.h>
 
-int look_right(const binary_tree_t *tree, int c);
-int look_levels(const binary_tree_t *tree, int c);
-
+/**
+ * binary_tree_height - measures od depht levels in a b_tree
+ * @tree: binary tree
+ *
+ * Return: size of binary tree
+ */
 size_t binary_tree_height(const binary_tree_t *tree)
 {
-	int height = 0, h_right = 0;
+	size_t h_left = 0, h_right = 0;
 
-	height = look_levels(tree->left, height);
-	h_right = look_right(tree, h_right);
+	if (tree == NULL)
+		return (0);
 
-	printf("right : %d\n", h_right);
-	if (h_right > height)
-		return (h_right);
+	if (tree->left == NULL)
+		h_left = 0;
 	else
-		return (height);
+		h_left = (binary_tree_height(tree->left) + 1);
 
-}
+	if (tree->right == NULL)
+		h_right = 0;
+	else
+		h_right = (binary_tree_height(tree->right) + 1);
 
-int look_levels(const binary_tree_t *tree, int c)
-{
-	if (tree == NULL)
-		return (c);
-	c++;
-	look_levels(tree->left, c);
-	return (c);
-}
-
-int look_right(const binary_tree_t *tree, int c)
-{
-	if (tree == NULL)
-                return (c);
-        c++;
-	printf("%d\n", tree->n);
-        look_right(tree->right, c);
-	
-        return (c);
+	if (h_left > h_right)
+		return (h_left);
+	else
+		return (h_right);
 }
 
