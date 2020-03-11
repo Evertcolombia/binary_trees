@@ -1,7 +1,7 @@
 #include "binary_trees.h"
 
 /**
- * bnary_tree_depth - gives the depth of a root in  a b_tree
+ * binary_tree_depth - gives the depth of a root in  a b_tree
  * @tree: root node in binary_tree
  *
  * Return: depth of root in binary_tree
