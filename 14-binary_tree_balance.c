@@ -33,9 +33,13 @@ int binary_tree(const binary_tree_t *tree)
 
 	if (tree->left)
 		h_left = binary_tree(tree->left)  + 1;
+	else
+		h_left += h_left;
 
 	if (tree->right)
 		h_right = binary_tree(tree->right) + 1;
+	else
+		h_right += h_right;
 
 	return (h_left - h_right);
 }
