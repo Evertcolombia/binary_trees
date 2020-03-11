@@ -15,9 +15,9 @@ int binary_tree_balance(const binary_tree_t *tree)
 		return (0);
 
 	if (tree->left)
-                h_left = binary_tree(tree->left)  + 1;
-        if (tree->right)
-                h_right = binary_tree(tree->right) + 1;
+		h_left = binary_tree(tree->left)  + 1;
+	if (tree->right)
+		h_right = binary_tree(tree->right) + 1;
 
 	return (h_left - h_right);
 }
@@ -41,9 +41,7 @@ int binary_tree(const binary_tree_t *tree)
 		h_right = binary_tree(tree->right) + 1;
 
 	if (h_left > h_right)
-	{
-		return(h_left);
-	}
+		return (h_left);
 	else
 		return (h_right);
 }
