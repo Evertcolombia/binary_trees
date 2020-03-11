@@ -31,14 +31,10 @@ int binary_tree(const binary_tree_t *tree)
 	if (tree == NULL)
 		return (0);
 
-	if (tree->left == NULL)
-		h_left = 0;
-	else
+	if (tree->left)
 		h_left = binary_tree(tree->left)  + 1;
 
-	if (tree->right == NULL)
-		h_right = 0;
-	else
+	if (tree->right)
 		h_right = binary_tree(tree->right) + 1;
 
 	return (h_left - h_right);
